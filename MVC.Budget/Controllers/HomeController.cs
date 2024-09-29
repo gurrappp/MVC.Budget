@@ -7,15 +7,40 @@ namespace MVC.Budget.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //private List<Transaction> _transactions;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
+            //_transactions = new List<Transaction>
+            //{
+            //    new Transaction
+            //    {
+            //        Id = 1,
+            //        Name = "Test",
+            //        Category = null,
+            //        Amount = 1.1,
+            //        Date = DateTime.Now
+            //    }
+            //};
         }
 
         public IActionResult Index()
         {
-            return View();
+            
+            var transactions = GetData();
+
+            return View(transactions);
+        }
+
+        public List<Transaction> GetData()
+        {
+            
+
+
+
+            return new List<Transaction>();
         }
 
         public IActionResult Privacy()
