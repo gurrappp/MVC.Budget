@@ -1,10 +1,16 @@
-﻿namespace MVC.Budget
+﻿using MVC.Budget.Context;
+using Microsoft.EntityFrameworkCore;
+
+namespace MVC.Budget
 {
     public static class Setup
     {
         public static WebApplication? CreateWebApplication()
         {
             var builder = WebApplication.CreateBuilder();
+
+            builder.Services.AddDbContext<BudgetContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("BudgetContext") ?? throw new InvalidOperationException("Connection string 'BudgetContext' not found.")));
 
             builder.Services.AddControllersWithViews();
 
