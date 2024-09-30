@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MVC.Budget.Context;
 using MVC.Budget.Models;
 using System.Diagnostics;
 
@@ -7,12 +9,13 @@ namespace MVC.Budget.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private BudgetContext _dbContext;
         //private List<Transaction> _transactions;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, BudgetContext context)
         {
             _logger = logger;
-
+            _dbContext = context;
             //_transactions = new List<Transaction>
             //{
             //    new Transaction
@@ -36,11 +39,11 @@ namespace MVC.Budget.Controllers
 
         public List<Transaction> GetData()
         {
-            
+
+            var transationList = _dbContext.Transactions.ToList();
 
 
-
-            return new List<Transaction>();
+            return transationList;
         }
 
         public IActionResult Privacy()

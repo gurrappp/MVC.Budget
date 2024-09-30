@@ -3,28 +3,36 @@
 @{
     ViewData["Title"] = "Personal Finance";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome To MVC.Budget!</h1>
-    <p>This is a personal finance app built in Visual Studio with C# / .Net and MVC structure. The front end is done in Razor Pages.</p>
-
-    <table class="table table-bordered table-responsive table-hover">
-        <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Date</th>
-        </tr>
-        @foreach(var t in Model)
-        {
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome To MVC.Budget!</h1>
+        <p>This is a personal finance app built in Visual Studio with C# / .Net and MVC structure. The front end is done in Razor Pages.</p>
+    </div>
+    <div style="padding-top: 100px">
+        <button type="button" onclick="">
+            Add
+        </button>
+    </div>
+    <div>
+        <table class="table table-bordered table-responsive table-hover">
             <tr>
-                <td>@t.Name</td>
-                <td>@t.Category</td>
-                <td>@t.Amount</td>
-                <td>@t.Date</td>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
             </tr>
-        }
-    </table>
-</div>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.Name</td>
+                    <td>@t.Category</td>
+                    <td>@t.Amount</td>
+                    <td>@t.Date</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+
 
 
