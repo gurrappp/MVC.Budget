@@ -42,8 +42,16 @@ namespace MVC.Budget.Controllers
 
             var transationList = _dbContext.Transactions.ToList();
 
-
             return transationList;
+        }
+
+        public IActionResult AddTransaction(Transaction transaction)
+        {
+            if (transaction == null)
+                throw new ArgumentNullException(nameof(transaction));
+
+            _dbContext.Transactions.Add(transaction);
+            return View();
         }
 
         public IActionResult Privacy()
